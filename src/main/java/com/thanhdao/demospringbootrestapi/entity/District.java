@@ -1,12 +1,14 @@
 package com.thanhdao.demospringbootrestapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -26,4 +28,8 @@ public class District {
     private City city;
 
 
+    @Column
+    @OneToMany(mappedBy = "district")
+    @JsonManagedReference
+    private List<Ward> wardList;
 }
